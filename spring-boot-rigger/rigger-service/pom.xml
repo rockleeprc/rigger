@@ -9,12 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rigger-web</artifactId>
+    <artifactId>rigger-service</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.rigger</groupId>
-            <artifactId>rigger-service</artifactId>
+            <artifactId>rigger-dao</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
