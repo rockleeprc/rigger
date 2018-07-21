@@ -6,10 +6,11 @@ import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.ApiResult;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.rigger.model.User;
-import com.rigger.service.IUserService;
+import com.rigger.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -22,36 +23,27 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController extends ApiController {
 
     @Autowired
-    private IUserService userService;
+    private UserService userService;
 
-    @GetMapping("/findById")
-    public User findAll(Integer id) {
-        User user = userService.selectById(id);
-        return user;
-    }
-
-
-    /**
-     * <p>
-     * 测试通用 Api Controller 逻辑
-     * </p>
-     * 测试地址：
-     * http://localhost:8080/user/api
-     * http://localhost:8080/user/api?test=mybatisplus
-     */
     @GetMapping("/api")
-    public ApiResult<String> testError(String test) {
-        ApiAssert.isNull(ErrorCode.TEST, test);
+    public ApiResult<String> api(String test) {
+//        ApiAssert.isNull(ErrorCode.TEST, test);
         return success(test);
     }
 
-    /**
-     * http://localhost:8080/user/test
-     */
-    @GetMapping("/test")
-    public IPage<User> test() {
-        return userService.selectPage(new Page<User>(0, 12), null);
+    @GetMapping("/selectPage")
+    public IPage<User> selectPage(){
+        return userService.selectPage(new Page<User>(),null);
     }
 
+    @GetMapping("/page")
+    public IPage<User> page(Page<User> page){
+        return userService.selectPage(page,null);
+    }
 
+    @GetMapping("/selectById")
+    public User selectById(@RequestParam(value="id") Integer id) {
+        User user = userService.selectById(id);
+        return user;
+    }
 }

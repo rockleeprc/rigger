@@ -8,7 +8,6 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <modules>
-        <module>rigger-common</module>
         <module>rigger-model</module>
         <module>rigger-dao</module>
         <module>rigger-web</module>
@@ -65,18 +64,29 @@
 
     </dependencies>
 
+
+    <!--指定使用maven打包-->
     <build>
-        <finalName>spring-boot-rigger</finalName>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
                 <configuration>
-                    <mainClass>com.rigger.SpringBootRiggerApplication</mainClass>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <skipTests>true</skipTests>    <!--默认关掉单元测试 -->
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 
 </project>
