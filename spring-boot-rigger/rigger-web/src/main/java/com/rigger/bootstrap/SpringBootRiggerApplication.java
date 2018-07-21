@@ -1,4 +1,4 @@
-package com;
+package com.rigger.bootstrap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -11,7 +11,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @EnableTransactionManagement
-@MapperScan("com.rigger")
+@ComponentScan(basePackages = {
+        "com.rigger.config","com.rigger.controller","com.rigger.service"})
 public class SpringBootRiggerApplication {
     private static final Log log = LogFactory.getLog(SpringBootRiggerApplication.class);
 
@@ -21,6 +22,6 @@ public class SpringBootRiggerApplication {
         app.setBannerMode(Banner.Mode.OFF);
         app.run(args);
         log.info("spring-boot-rigger is success!");
-        System.err.println("sample started. http://localhost:8080/hello/rigger");
+        System.err.println("sample started. http://localhost:8080");
     }
 }

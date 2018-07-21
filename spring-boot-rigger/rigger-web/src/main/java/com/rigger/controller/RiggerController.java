@@ -1,4 +1,4 @@
-package com.rigger.test;
+package com.rigger.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

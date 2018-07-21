@@ -1,4 +1,4 @@
-package com.rigger.test;
+package com.rigger.controller;
 
 import com.baomidou.mybatisplus.extension.api.IErrorCode;
 
