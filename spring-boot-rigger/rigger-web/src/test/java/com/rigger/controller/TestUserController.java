@@ -31,8 +31,8 @@ public class TestUserController {
 
     @Test
     public void selectById(){
-        User user = userController.selectById(5);
-        System.out.println(user);
+        ApiResult<User> result = userController.selectById(5);
+        System.out.println(result.getData());
     }
 
     @Test

@@ -42,8 +42,8 @@ public class UserController extends ApiController {
     }
 
     @GetMapping("/selectById")
-    public User selectById(@RequestParam(value="id") Integer id) {
+    public  ApiResult<User> selectById(@RequestParam(value="id") Integer id) {
         User user = userService.selectById(id);
-        return user;
+        return super.success(user);
     }
 }
