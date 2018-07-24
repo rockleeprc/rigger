@@ -1,6 +1,7 @@
 package jwt;
 
 import com.auth0.jwt.interfaces.Claim;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import org.junit.Test;
 
 import java.util.Map;
@@ -24,6 +25,12 @@ public class JwtTest {
             System.out.println(result.get("userId").asString());
             result.keySet().forEach(key -> System.out.println(key));
         }
+    }
+
+    @Test
+    public void t(){
+        DecodedJWT decode = JwtToken.decode(null);
+        System.out.println(decode);
     }
 
 }

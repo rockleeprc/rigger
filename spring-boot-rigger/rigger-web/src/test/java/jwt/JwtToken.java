@@ -61,7 +61,7 @@ public class JwtToken {
             JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SECRET)).build();
             jwt = verifier.verify(token);
         } catch (Exception e) {
-            // e.printStackTrace();
+             e.printStackTrace();
             // token 校验失败, 抛出Token验证非法异常
         }
         return jwt;
