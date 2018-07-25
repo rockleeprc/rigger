@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.util.Assert;
 
 @Configuration
+@Deprecated
 public class ServiceInfoUtil implements ApplicationListener<EmbeddedServletContainerInitializedEvent> {
     private static EmbeddedServletContainerInitializedEvent event;
 

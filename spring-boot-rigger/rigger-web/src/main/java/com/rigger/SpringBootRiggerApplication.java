@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @ServletComponentScan
-@EnableTransactionManagement
+//@EnableTransactionManagement
 public class SpringBootRiggerApplication {
     private static final Log log = LogFactory.getLog(SpringBootRiggerApplication.class);
 
