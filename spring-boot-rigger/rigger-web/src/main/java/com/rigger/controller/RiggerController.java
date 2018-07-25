@@ -1,13 +1,14 @@
 package com.rigger.controller;
 
+import com.rigger.common.ApiRs;
+import com.rigger.util.JwtToken;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController()
 @RequestMapping("/rigger")
@@ -33,10 +34,18 @@ public class RiggerController {
     }
 
 
-    @GetMapping("req")
-    public void req(HttpServletRequest request, @CookieValue(value="JESSIONID",required = false) String sessionId){
+    @GetMapping("/session")
+    public void session(HttpServletRequest request, @CookieValue(value="JESSIONID",required = false) String sessionId){
         System.out.println("sessionId="+request.getSession().getId());
         System.out.println("sessionId="+sessionId);
+    }
+
+    @GetMapping("/jwt")
+    public ApiRs<Map<String,String>> jwt(@RequestParam("userId") Long userId){
+        String token = JwtToken.createToken(userId);
+        Map<String,String> result = new HashMap<String,String>();
+        result.put("token",token);
+        return ApiRs.ok(result);
     }
 
 
