@@ -15,4 +15,14 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
 
+    @Override
+    public void insert() {
+        User u = new User();
+        u.setName("C");
+        baseMapper.insert(u);
+        int i=1/0;
+        u.setAge(20);
+        baseMapper.updateById(u);
+
+    }
 }

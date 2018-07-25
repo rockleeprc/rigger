@@ -1,15 +1,16 @@
 package com.rigger.model;
 
 
+import java.io.Serializable;
+
 /**
  * 用户表
  */
-@SuppressWarnings("serial")
-public class User {
+public class User implements Serializable {
     private Integer id;
-    private String userName;
-    private String userAge;
-    private String userAddress;
+    private String name;
+    private Integer age;
+    private String address;
     private Integer sex;
 
     public Integer getId() {
@@ -20,28 +21,28 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getUserAge() {
-        return userAge;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setUserAge(String userAge) {
-        this.userAge = userAge;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
-    public String getUserAddress() {
-        return userAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Integer getSex() {
@@ -56,9 +57,9 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", userAge='" + userAge + '\'' +
-                ", userAddress='" + userAddress + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", address='" + address + '\'' +
                 ", sex=" + sex +
                 '}';
     }
