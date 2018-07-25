@@ -20,28 +20,23 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
         System.out.println("input TokenInterceptor.....");
 
         response.setCharacterEncoding("utf-8");
-//        String token = request.getParameter("token");
         String token = request.getHeader("Authorization");
-        //token不存在
-        if(null != token && !JwtToken.isExpire(token)) {
+        if (null != token && !JwtToken.isExpire(token)) {
             Map<String, Claim> claims = JwtToken.verifyToken(token);
             String userId = request.getParameter("userId");
 
-            if(userId.equals(claims.get("userId").asString())){
+            if (userId.equals(claims.get("userId").asString())) {
                 return true;
             }
-            responseMessage(response,"用户id不匹配");
+            responseMessage(response, "用户id不匹配");
             return false;
 
         }
-        else
-        {
-            responseMessage(response,"没有token，或过期");
-            return false;
-        }
+        responseMessage(response, "没有token，或过期");
+        return false;
     }
 
-    private void responseMessage(HttpServletResponse response,String message) throws IOException {
+    private void responseMessage(HttpServletResponse response, String message) throws IOException {
         PrintWriter out = response.getWriter();
         response.setContentType("application/json; charset=utf-8");
         ApiResult<Object> failed = ApiResult.failed(message);

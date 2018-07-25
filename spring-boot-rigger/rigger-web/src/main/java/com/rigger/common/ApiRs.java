@@ -6,7 +6,7 @@ public class ApiRs<T> {
     private String msg;
     private T data;
 
-    public ApiRs() {
+    private ApiRs() {
     }
 
     public ApiRs(Integer code, String msg) {
@@ -14,59 +14,37 @@ public class ApiRs<T> {
         this.msg = msg;
     }
 
+    public ApiRs(Integer code, String msg, T data) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
+
     @Deprecated
     private static <T> ApiRs<T> restResult(Integer code, String msg, T data) {
-        ApiRs<T> apiResult = new ApiRs();
-        apiResult.setCode(code);
-        apiResult.setData(data);
-        apiResult.setMsg(msg);
+        ApiRs<T> apiResult = new ApiRs(code,msg,data);
         return apiResult;
     }
 
     private static <T> ApiRs<T> restResult(ErrorCode errorCode, T data) {
-        ApiRs<T> apiResult = new ApiRs();
-        apiResult.setCode(errorCode.getCode());
-        apiResult.setData(data);
-        apiResult.setMsg(errorCode.getMsg());
+        ApiRs<T> apiResult = new ApiRs(errorCode.getCode(),errorCode.getMsg(),data);
         return apiResult;
     }
 
-    public static <T> ApiRs<T> Success() {
-        return restResult(ApiErrorCode.SUCCESS, null);
+    public static <T> ApiRs<T> ok() {
+        return ok(null);
     }
 
-    public static <T> ApiRs<T> fail(T data) {
-        return restResult(ApiErrorCode.FAIL, data);
+    public static <T> ApiRs<T> ok(T data) {
+        return restResult(ApiErrorCode.OK, data);
     }
 
-    public static <T> ApiRs<T> notFound() {
-        return restResult(ApiErrorCode.NOT_FOUND, null);
-    }
-    public static <T> ApiRs<T> notFound(T data) {
-        return restResult(ApiErrorCode.NOT_FOUND, data);
+    public static <T> ApiRs<T> no() {
+        return no(null);
     }
 
-    public static <T> ApiRs<T> badRequest(T data) {
-        return restResult(ApiErrorCode.BAD_REQUEST, data);
-    }
-
-    public static <T> ApiRs<T> forbidden(T data) {
-        return restResult(ApiErrorCode.FORBIDDEN, data);
-    }
-
-    public static <T> ApiRs<T> unauthorized(T data) {
-        return restResult(ApiErrorCode.UNAUTHORIZED, data);
-    }
-
-    public static <T> ApiRs<T> serverInternalError(T data) {
-        return restResult(ApiErrorCode.SERVER_INTERNAL_ERROR, data);
-    }
-
-    public static <T> ApiRs<T> Fail() {
-        return restResult(ApiErrorCode.FAIL, null);
-    }
-    public static <T> ApiRs<T> Fail(T data) {
-        return restResult(ApiErrorCode.FAIL, data);
+    public static <T> ApiRs<T> no(T data) {
+        return restResult(ApiErrorCode.NO, data);
     }
 
     public Integer getCode() {
