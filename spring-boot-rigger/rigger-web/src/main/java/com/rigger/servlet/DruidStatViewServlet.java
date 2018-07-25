@@ -1,4 +1,4 @@
-package com.rigger.config;
+package com.rigger.servlet;
 
 
 import com.alibaba.druid.support.http.StatViewServlet;

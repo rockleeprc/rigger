@@ -1,4 +1,4 @@
-package com.rigger.interceptor;
+package com.rigger.util;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;

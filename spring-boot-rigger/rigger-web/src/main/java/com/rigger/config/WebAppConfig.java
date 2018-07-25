@@ -10,6 +10,6 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new TokenInterceptor()).addPathPatterns("/**").excludePathPatterns("/rigger/*");
+        registry.addInterceptor(new TokenInterceptor()).addPathPatterns("/**").excludePathPatterns("/rigger/**").excludePathPatterns("/druid/**");
     }
 }

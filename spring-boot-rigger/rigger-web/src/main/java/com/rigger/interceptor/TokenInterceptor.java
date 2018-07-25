@@ -1,10 +1,9 @@
 package com.rigger.interceptor;
 
 import com.auth0.jwt.interfaces.Claim;
-import com.auth0.jwt.interfaces.DecodedJWT;
 import com.baomidou.mybatisplus.extension.api.ApiResult;
+import com.rigger.util.JsonMapper;
 import com.rigger.util.JwtToken;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
