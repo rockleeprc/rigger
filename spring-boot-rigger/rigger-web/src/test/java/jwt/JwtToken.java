@@ -24,7 +24,6 @@ public class JwtToken {
 
 
     public static String createToken(Long userId) {
-        Date iatDate = new Date();
         // expire time
         Calendar nowTime = Calendar.getInstance();
 //        nowTime.add(calendarField, calendarInterval);
@@ -39,8 +38,8 @@ public class JwtToken {
         String token = JWT.create().withHeader(map) // header
                 .withClaim("iss", "Service") // payload
                 .withClaim("aud", "APP")
-                .withClaim("userId", null == userId ? null : userId.toString())
-                .withIssuedAt(iatDate) // sign time
+                .withClaim("userId", userId)
+                .withIssuedAt(new Date()) // sign time
                 .withExpiresAt(expiresDate) // expire time
                 .sign(Algorithm.HMAC256(SECRET)); // signature
         return token;

@@ -16,26 +16,26 @@ import org.apache.commons.lang3.StringUtils;
 
 public class JsonMapper {
 
-	private static ObjectMapper objectMapper = new ObjectMapper();
+	private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
 	static {
 		// FAIL_ON_UNKNOWN_PROPERTIES在序列化的时候，如果遇到不认识的字段的处理方式
 		// 默认启用特性，这意味着在遇到未知属性时抛出JsonMappingException。在引入该特性之前，这是默认的默认设置。
-		objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+		OBJECT_MAPPER.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 		// FAIL_ON_EMPTY_BEANS决定了在没有找到类型的存取器时发生了什么（并且没有注释表明它是被序列化的）。如果启用（默认），
 		// 将抛出一个异常来指明这些是非序列化类型;如果禁用了，它们将被序列化为空对象，即没有任何属性。
 		// 请注意，这个特性只对那些没有任何识别注释的“空”bean产生影响（如@json序列化）：那些有注释的bean不会导致抛出异常。
-		objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+		OBJECT_MAPPER.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
 		//取消时间的转化格式,默认是时间戳,可以取消,同时需要设置要表现的时间格式
-		objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-		objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+		OBJECT_MAPPER.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+		OBJECT_MAPPER.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 
 		
 		// 过滤类的属性id
-		// objectMapper.setFilters(new
+		// OBJECT_MAPPER.setFilters(new
 		// SimpleFilterProvider().setFailOnUnknownId(false));
 		// 在序列化时，只有那些值为null或被认为为空的值的属性才不会被包含在内。
-		objectMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
+		OBJECT_MAPPER.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
 	}
 	
 	
@@ -52,7 +52,7 @@ public class JsonMapper {
 			return null;
 		}
 		try {
-			return obj instanceof String ? (String) obj : objectMapper.writeValueAsString(obj);
+			return obj instanceof String ? (String) obj : OBJECT_MAPPER.writeValueAsString(obj);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -72,7 +72,7 @@ public class JsonMapper {
 		}
 		try {
 			return obj instanceof String ? (String) obj
-					: objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
+					: OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -92,7 +92,7 @@ public class JsonMapper {
 			return null;
 		}
 		try {
-			return clazz.equals(String.class) ? (T) src : objectMapper.readValue(src, clazz);
+			return clazz.equals(String.class) ? (T) src : OBJECT_MAPPER.readValue(src, clazz);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -113,7 +113,7 @@ public class JsonMapper {
 		}
 		try {
 			return (T) (typeReference.getType().equals(String.class) ? src
-					: objectMapper.readValue(src, typeReference));
+					: OBJECT_MAPPER.readValue(src, typeReference));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -130,9 +130,9 @@ public class JsonMapper {
 	 * @return
 	 */
 	public static <T> T jsonToObject(String src, Class<?> collectionClass, Class<?>... elementClasses) {
-		JavaType javaType = objectMapper.getTypeFactory().constructParametricType(collectionClass, elementClasses);
+		JavaType javaType = OBJECT_MAPPER.getTypeFactory().constructParametricType(collectionClass, elementClasses);
 		try {
-			return objectMapper.readValue(src, javaType);
+			return OBJECT_MAPPER.readValue(src, javaType);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -141,7 +141,7 @@ public class JsonMapper {
 
 	public final static boolean isJson(String json) {
 		try {
-			objectMapper.readTree(json);
+			OBJECT_MAPPER.readTree(json);
 			return true;
 		} catch (IOException e) {
 			return false;

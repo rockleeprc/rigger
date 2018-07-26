@@ -23,6 +23,7 @@ public class JwtTest {
         }else {
             Map<String, Claim> result = JwtToken.verifyToken(token);
             System.out.println(result.get("userId").asString());
+            System.out.println(result.get("exp").asLong());
             result.keySet().forEach(key -> System.out.println(key));
         }
     }
