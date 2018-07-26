@@ -27,7 +27,7 @@ public class UserController extends ApiController {
 
     @GetMapping("/api")
     public ApiResult<String> api(String test) {
-//        ApiAssert.isNull(ErrorCode.TEST, test);
+//        ApiAssert.isNull(Code.TEST, test);
         return success(test);
     }
 

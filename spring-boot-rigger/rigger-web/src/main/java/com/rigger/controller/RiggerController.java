@@ -1,6 +1,6 @@
 package com.rigger.controller;
 
-import com.rigger.common.ApiRs;
+import com.rigger.common.Result;
 import com.rigger.util.JwtToken;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -41,11 +41,11 @@ public class RiggerController {
     }
 
     @GetMapping("/jwt")
-    public ApiRs<Map<String,String>> jwt(@RequestParam("userId") Long userId){
+    public Result<Map<String,String>> jwt(@RequestParam("userId") Long userId){
         String token = JwtToken.createToken(userId);
         Map<String,String> result = new HashMap<String,String>();
         result.put("token",token);
-        return ApiRs.ok(result);
+        return Result.ok(result);
     }
 
 

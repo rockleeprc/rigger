@@ -1,6 +1,6 @@
 package com.rigger.common;
 
-public interface ErrorCode {
+public interface Code {
     Integer getCode();
     String getMsg();
 }
