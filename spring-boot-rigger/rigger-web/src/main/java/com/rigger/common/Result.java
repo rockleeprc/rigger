@@ -28,12 +28,12 @@ public class Result<T> implements Serializable {
     }
 
     /**
-     * @see Result#restResult(java.lang.Integer, java.lang.String, java.lang.Object)
      * @param code
      * @param msg
      * @param data
      * @param <T>
      * @return
+     * @see Result#restResult(java.lang.Integer, java.lang.String, java.lang.Object)
      */
     @Deprecated
     private static <T> Result<T> restResult(Integer code, String msg, T data) {

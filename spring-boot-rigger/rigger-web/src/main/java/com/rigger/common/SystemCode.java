@@ -8,7 +8,8 @@ public enum SystemCode implements Code {
 
     /* 成功状态码 */
     OK(200, "Success"),
-    NO(400, "Fail"),
+    BADREQUEST(400, " BadRequest"),
+    NOT_FOUND(404 , " Not Found"),
     UNAUTHORIZED(401, "Unauthorized"),
     ERR(500, "Server Internal Error"),
 

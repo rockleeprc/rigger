@@ -1,10 +1,13 @@
 package com.rigger.common;
 
+import com.baomidou.mybatisplus.extension.enums.ApiErrorCode;
+import com.rigger.model.User;
 import com.rigger.util.FastJsonUtil;
 import com.rigger.util.JsonMapper;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 public class ResultTest {
 
@@ -35,5 +38,9 @@ public class ResultTest {
         System.out.println(JsonMapper.objectToJson(Result.no(SystemCode.UNAUTHORIZED,"认证失败")));
         System.out.println(JsonMapper.objectToJson(Result.no(SystemCode.DATA_ALREADY_EXISTED)));
         System.out.println(JsonMapper.objectToJson(Result.no(SystemCode.DATA_ALREADY_EXISTED,Arrays.asList("1","2","4"))));
+        User u = new User();
+//        u.setId(1);
+        u.setAddress("A");
+        System.out.println(JsonMapper.objectToJson(u));
     }
 }

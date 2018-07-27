@@ -2,6 +2,8 @@ package com.rigger.interceptor;
 
 import com.auth0.jwt.interfaces.Claim;
 import com.baomidou.mybatisplus.extension.api.ApiResult;
+import com.rigger.common.Result;
+import com.rigger.common.SystemCode;
 import com.rigger.util.JsonMapper;
 import com.rigger.util.JwtToken;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -38,7 +40,7 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
     private void responseMessage(HttpServletResponse response, String message) throws IOException {
         PrintWriter out = response.getWriter();
         response.setContentType("application/json; charset=utf-8");
-        ApiResult<Object> failed = ApiResult.failed(message);
+        Result<Object> failed = Result.no(SystemCode.PERMISSION_NO_ACCESS);
         String json = JsonMapper.objectToJson(failed);
         out.print(json);
         out.flush();

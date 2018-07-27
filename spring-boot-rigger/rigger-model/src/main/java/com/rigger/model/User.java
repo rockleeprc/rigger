@@ -13,6 +13,14 @@ public class User implements Serializable {
     private String address;
     private Integer sex;
 
+    public User() {
+    }
+
+    public User(Integer id) {
+        System.out.println("--"+id);
+        this.id = id;
+    }
+
     public Integer getId() {
         return id;
     }
