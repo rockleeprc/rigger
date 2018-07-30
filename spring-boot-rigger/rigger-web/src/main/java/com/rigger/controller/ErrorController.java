@@ -1,8 +1,9 @@
 package com.rigger.controller;
 
 import com.baomidou.mybatisplus.extension.api.ApiResult;
-import com.baomidou.mybatisplus.extension.enums.ApiErrorCode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.rigger.common.Result;
+import com.rigger.common.SystemCode;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,7 +74,7 @@ public class ErrorController extends AbstractErrorController {
             error.put("success", false);
             error.put("errorMessage", getErrorMessage(cause));
             error.put("message", message);
-            ApiResult<Map> result = ApiResult.restResult(error, ApiErrorCode.FAILED);
+            Result<Map> result =Result.no(SystemCode.ERR,error);
             writeJson(response, result );
             return null;
         }
@@ -91,7 +92,7 @@ public class ErrorController extends AbstractErrorController {
         }
     }
 
-    protected void writeJson(HttpServletResponse response, ApiResult<Map> error) {
+    protected void writeJson(HttpServletResponse response, Result<Map> error) {
         response.setContentType("application/json;charset=utf-8");
         try {
             response.getWriter().write(objectMapper.writeValueAsString(error));
