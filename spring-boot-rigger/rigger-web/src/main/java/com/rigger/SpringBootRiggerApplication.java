@@ -1,5 +1,6 @@
 package com.rigger;
 
+import com.rigger.config.EnvConfig;
 import com.rigger.config.ServiceInfoUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -17,12 +18,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //@EnableTransactionManagement
 public class SpringBootRiggerApplication {
     private static final Log log = LogFactory.getLog(SpringBootRiggerApplication.class);
+    @Autowired
+    private static EnvConfig env;
 
     public static void main(String[] args) {
 //		SpringApplication.run(SpringBootRiggerApplication.class, args);
         SpringApplication app = new SpringApplication(SpringBootRiggerApplication.class);
         app.run(args);
-        log.info("spring-boot-rigger is success!");
-        System.err.println("sample started. http://localhost:"+ ServiceInfoUtil.getPort());
+        System.out.println("spring-boot-rigger is success!");
+        System.err.println("sample started. http://localhost:" + ServiceInfoUtil.getPort());
     }
 }
