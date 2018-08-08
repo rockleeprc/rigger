@@ -40,7 +40,7 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
     private void responseMessage(HttpServletResponse response, String message) throws IOException {
         PrintWriter out = response.getWriter();
         response.setContentType("application/json; charset=utf-8");
-        Result<Object> failed = Result.no(SystemCode.PERMISSION_NO_ACCESS);
+        Result<Object> failed = Result.no(SystemCode.PERMISSION_NO_ACCESS,message);
         String json = JsonMapper.objectToJson(failed);
         out.print(json);
         out.flush();
