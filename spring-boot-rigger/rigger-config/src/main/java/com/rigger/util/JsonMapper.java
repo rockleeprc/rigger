@@ -12,7 +12,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import org.apache.commons.lang3.StringUtils;
 
 public class JsonMapper {
 
@@ -88,7 +87,8 @@ public class JsonMapper {
 	 * @return
 	 */
 	public static <T> T jsonToObject(String src, Class<T> clazz) {
-		if (StringUtils.isEmpty(src) || clazz == null) {
+//		if (StringUtils.isEmpty(src) || clazz == null) {
+		if (src==null || src.length()==0 || clazz == null) {
 			return null;
 		}
 		try {
@@ -108,7 +108,8 @@ public class JsonMapper {
 	 * @return
 	 */
 	public static <T> T jsonToObject(String src, TypeReference<T> typeReference) {
-		if (StringUtils.isEmpty(src) || typeReference == null) {
+//		if (StringUtils.isEmpty(src) || typeReference == null) {
+		if (src==null || src.length()==0 || typeReference == null) {
 			return null;
 		}
 		try {

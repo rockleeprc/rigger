@@ -1,7 +1,5 @@
 package com.rigger.common;
 
-import com.alibaba.fastjson.support.spring.FastjsonSockJsMessageCodec;
-import com.rigger.util.FastJsonUtil;
 import com.rigger.util.JsonMapper;
 
 import java.io.Serializable;

@@ -1,0 +1,28 @@
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spring-boot-rigger
+  profiles:
+    active:
+      - dev
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+logging:
+  config: classpath:config/logback-spring.xml
+
+# mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  type-aliases-package: com.rigger
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: NOT_EMPTY
+      db-column-underline: true

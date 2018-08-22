@@ -17,18 +17,10 @@
             <artifactId>rigger-service</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
-            <groupId>com.auth0</groupId>
-            <artifactId>java-jwt</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
+            <groupId>com.rigger</groupId>
+            <artifactId>rigger-config</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
     
