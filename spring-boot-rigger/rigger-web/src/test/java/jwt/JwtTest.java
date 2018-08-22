@@ -2,6 +2,7 @@ package jwt;
 
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.rigger.util.JwtToken;
 import org.junit.Test;
 
 import java.util.Map;
