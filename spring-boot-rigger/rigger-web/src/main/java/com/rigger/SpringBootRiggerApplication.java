@@ -19,7 +19,7 @@ public class SpringBootRiggerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootRiggerApplication.class, args);
-        logger.info("repast-pos-helper Is Success!");
+        logger.info("spring-boot-rigger Is Success!");
         logger.debug("Druid Monitor. http://" + EnvironmentHolder.getAddr() + ":" + EnvironmentHolder.getPort() + "/druid/index.html");
         logger.debug("Sample Started. http://" + EnvironmentHolder.getAddr() + ":" + EnvironmentHolder.getPort());
         System.err.println("---Don't Use Prod Profile In Your Local Envrionment---");

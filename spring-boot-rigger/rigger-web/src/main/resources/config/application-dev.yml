@@ -4,7 +4,7 @@ server:
   tomcat:
     accesslog:
       enabled: true
-      directory: D:/data/repast/tomcat/
+      directory: D:/data/rigger/tomcat/
 
 # datasource
 spring:
@@ -16,8 +16,8 @@ spring:
     druid:
       type: com.alibaba.druid.pool.DruidDataSource
       initialCize: 5    # 初始化大小
-      minIdle: 10       # 最小
-      maxActive: 20    # 最大
+      minIdle: 30       # 最小
+      maxActive: 100    # 最大
       maxWait: 60000  # 配置获取连接等待超时的时间
       timeBetweenEvictionRunsMillis: 60000    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
       minEvictableIdleTimeMillis: 300000   # 配置一个连接在池中最小生存的时间，单位是毫秒
