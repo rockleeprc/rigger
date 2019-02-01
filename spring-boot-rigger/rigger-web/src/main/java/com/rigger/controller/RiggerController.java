@@ -17,7 +17,8 @@ public class RiggerController {
 
 
     @GetMapping("/info")
-    public String info() {
+    public String info(HttpServletRequest request) {
+        request.getParameterMap();
         log.info("log....");
         return "Hello spring-boot-rigger";
     }
