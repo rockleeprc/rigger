@@ -152,7 +152,7 @@ public class JsonMapper {
     }
 
     public static void main(String[] args) {
-        String json = ""
+        String json = "";
 //        System.out.println(isJson(json));
 
         Canal canal = jsonToObject(json, Canal.class);
