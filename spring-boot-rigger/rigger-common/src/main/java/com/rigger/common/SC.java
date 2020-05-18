@@ -3,13 +3,13 @@ package com.rigger.common;
 /**
  * 系统错误码
  */
-public enum SystemCode implements Code {
+public enum SC implements Code {
 
 
     /* 成功状态码 */
-    OK(200, "Success"),
-    BADREQUEST(400, " BadRequest"),
-    NOT_FOUND(404 , " Not Found"),
+    SUC(200, "Success"),
+    BAD_REQUEST(400, " Bad Request"),
+    NOT_FOUND(404, " Not Found"),
     UNAUTHORIZED(401, "Unauthorized"),
     ERR(500, "Server Internal Error"),
 
@@ -52,7 +52,7 @@ public enum SystemCode implements Code {
     private final Integer code;
     private final String msg;
 
-    private SystemCode(Integer code, String msg) {
+    private SC(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
     }

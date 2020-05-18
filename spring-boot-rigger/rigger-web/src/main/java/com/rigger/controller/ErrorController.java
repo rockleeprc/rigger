@@ -1,6 +1,5 @@
 package com.rigger.controller;
 
-import com.baomidou.mybatisplus.extension.api.ApiResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rigger.common.Result;
 import com.rigger.common.SystemCode;

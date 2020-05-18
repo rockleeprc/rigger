@@ -1,9 +1,6 @@
 package com.rigger.common;
 
-import com.rigger.util.JsonMapper;
-
 import java.io.Serializable;
-import java.util.Arrays;
 
 public class Result<T> implements Serializable {
 
@@ -49,7 +46,7 @@ public class Result<T> implements Serializable {
     }
 
     public static <T> Result<T> ok(T data) {
-        return restResult(SystemCode.OK, data);
+        return restResult(SystemCode.SUC, data);
     }
 
     public static <T> Result<T> no(Code code) {
